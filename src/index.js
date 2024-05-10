@@ -1,3 +1,5 @@
 import './style.css';
+import {Todo} from './todo.js';
 
-console.log("Hello javascript");
+const todo1 = new Todo("Do laundry", "Description", "25/12/2025", 1, "Remember the crusty socks", false);
+console.log(todo1);
