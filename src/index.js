@@ -28,7 +28,6 @@ console.log(":::::::::");
 
 console.log("p: "+p)
 let d = new DOMInterface(p);
-d.clearDOM();
 d.render();
 
 p.renderProjects();

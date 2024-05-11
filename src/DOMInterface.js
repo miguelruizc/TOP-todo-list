@@ -21,15 +21,18 @@ export class DOMInterface {
             //Iterate all todos
             element.todoList.forEach(todo => {
                 //Set delete todo click-listener
-                todo.deleteButton.addEventListener("click", ()=>{this.deleteTodo();});
+                todo.deleteButton.addEventListener("click", ()=>{this.deleteTodo(element.title, todo.title);});
             });
         });
         //Create project button
         let createProjectButton = document.querySelector(".createProjectButton");
-        createProjectButton.addEventListener("click", ()=>{this.addProject});
+        createProjectButton.addEventListener("click", ()=>{this.addProject("Project")});
     }
 
     render() {
+        // Clear DOM before rendering
+        this.clearDOM();
+
         this.projectsInterface.projects.forEach((element) => {
             // Project div
             let projectDiv = document.createElement("div");
@@ -118,21 +121,21 @@ export class DOMInterface {
     //Event handlers
     addTodo(projectName) {
         this.projectsInterface.createTodo(projectName, undefined, undefined, undefined, undefined, undefined, undefined);
-        this.clearDOM();
         this.render();
     }
 
     deleteProject(projectName) {
         this.projectsInterface.deleteProject(projectName);
-        this.clearDOM();
         this.render();
     }
 
-    deleteTodo() {
-        console.log("delete todo clicked");
+    deleteTodo(projectName, todoName) {
+        this.projectsInterface.deleteTodo(projectName, todoName);
+        this.render();
     }
 
-    addProject() { 
-        console.log("add project clicked");
+    addProject(projectName) { 
+        this.projectsInterface.createProject(projectName);
+        this.render();
     }
 }
