@@ -14,23 +14,18 @@ export class DOMInterface {
         //console.log("This(outside): " + JSON.stringify(this, null, 2));
         this.projectsInterface.projects.forEach((element) => {
             //Set add task click-Listener
-            element.addTodoButton.addEventListener("click", ()=>{
-                this.projectsInterface.createTodo(element.title, undefined, undefined,undefined, undefined, undefined, undefined);
-                this.clearDOM();
-                this.render();
-            });
+            element.addTodoButton.addEventListener("click", this.addTodo);
             //Set delete project click-listener
-            element.deleteProjectButton.addEventListener("click", ()=>{
-                console.log("removeProjectButton clicked")
-            });
+            element.deleteProjectButton.addEventListener("click", this.deleteProject);
             //Iterate all todos
             element.todoList.forEach((todo) => {
                 //Set delete todo click-listener
-                todo.deleteButton.addEventListener("click", ()=>{
-                    console.log("removeTodo clicked");
-                });
+                todo.deleteButton.addEventListener("click", this.deleteTodo);
             });
         });
+        //Create project button
+        let createProjectButton = document.querySelector(".createProjectButton");
+        createProjectButton.addEventListener("click", this.addProject);
     }
 
     render() {
@@ -110,6 +105,30 @@ export class DOMInterface {
             this.mainContainer.appendChild(projectDiv);
         });
 
+        //Create project button
+        let createProject = document.createElement("button");
+        createProject.classList.add("createProjectButton");
+        createProject.textContent = "Add project";
+        this.mainContainer.appendChild(createProject);
+
         this.setEventListeners();
+    }
+
+    //Event handlers
+    addTodo() {
+        console.log("add task clicked");
+        // this.projectsInterface.createTodo(element.title, undefined, undefined,undefined, undefined, undefined, undefined);
+    }
+
+    deleteProject() {
+        console.log("delete project clicked");
+    }
+
+    deleteTodo() {
+        console.log("delete todo clicked");
+    }
+
+    addProject() { 
+        console.log("add project clicked");
     }
 }

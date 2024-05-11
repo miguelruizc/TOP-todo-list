@@ -34,5 +34,6 @@ d.render();
 p.renderProjects();
 console.log(projects);
 
+// TODO: Store data on exit event (and maybe periodically)
 let data = JSON.stringify(projects);
 localStorage.setItem("projectsData", data);

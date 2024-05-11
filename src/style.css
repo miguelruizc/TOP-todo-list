@@ -48,3 +48,8 @@ button:active {
     background-color: #ffb0b0;
     display: block;
 }
+
+.createProjectButton {
+    background-color: rgb(12, 97, 255);
+    color: white;
+}
