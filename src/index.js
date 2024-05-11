@@ -19,5 +19,5 @@ console.log("");
 console.log("Editing...");
 console.log("");
 
-c.editTodo("Work", "Taxes", "notes", "Remember to include crypto and also to include switzerland accounts");
+c.editProject("Work", "Work related");
 c.renderProjects();

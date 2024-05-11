@@ -63,6 +63,14 @@ export class ConsoleInterface {
         });
     }
 
+    editProject(projectName, newName){
+        this.projects.forEach(project => {
+            if(project.title === projectName) {
+                project.title = newName;
+            }
+        });
+    }
+
     renderProjects() {
         if(this.projects.length === 0)
                 console.log("No projects");
