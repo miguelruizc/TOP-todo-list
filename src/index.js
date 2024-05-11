@@ -11,6 +11,11 @@ let c = new ConsoleInterface(projects);
 
 c.createTodo();
 c.createTodo();
+c.createTodo("Work", "Taxes", "Do taxes", undefined, 1,"Remember to include crypto", false);
+c.createTodo("Work", "Q1 Report", "Report of the 1st quarter", undefined, 1,"Spreadsheet and presentation", false);
 c.renderProjects();
+
+console.log("Deleting...");
+
 c.deleteProject("Default");
 c.renderProjects();

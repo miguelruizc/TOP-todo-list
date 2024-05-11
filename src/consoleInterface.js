@@ -39,11 +39,27 @@ export class ConsoleInterface {
         this.projects = temp;
     }
 
+    deleteTodo(projectName, todoName){
+        //Iterate projects to find ProjectName
+        this.projects.forEach(element => {
+            if(element.title === projectName){
+                //Filter todos with todoName
+                let tempArray = element.todoList.filter(todo => todo.title !== todoName);
+                element.todoList = tempArray;
+            }  
+        });
+    }
+
     renderProjects() {
         if(this.projects.length === 0)
-            console.log("No projects");
+                console.log("No projects");
+
         this.projects.forEach(element => {
             console.log(`Project: ${element.title}`);
+            
+            if(element.todoList.length === 0)
+                console.log("Empty project");
+
             element.todoList.forEach(todo => {
                 console.log(todo.toString());
             });
