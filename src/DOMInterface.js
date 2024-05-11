@@ -77,11 +77,5 @@ export class DOMInterface {
             //Append projectDiv
             this.mainContainer.appendChild(projectDiv);
         });
-
-        
-    }
-
-    addTodoClick(event) {
-        console.log("add clicked");
     }
 }
