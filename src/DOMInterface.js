@@ -8,6 +8,21 @@ export class DOMInterface {
     clearDOM() {
         this.mainContainer.innerHTML = "";
     }
+    
+    setEventListeners() {
+        //Iterate all projects
+        this.projectsInterface.projects.forEach((element) => {
+            //Set add task click-Listener
+            element.addTodoButton.addEventListener("click", ()=>{console.log("addTodoButton clicked")});
+            //Set delete project click-listener
+            element.deleteProjectButton.addEventListener("click", ()=>{console.log("removeProjectButton clicked")});
+            //Iterate all todos
+            element.todoList.forEach((todo) => {
+                //Set delete todo click-listener
+                todo.deleteButton.addEventListener("click", ()=>{console.log("removeTodo clicked")});
+            });
+        });
+    }
 
     render() {
         this.projectsInterface.projects.forEach((element) => {
@@ -32,6 +47,7 @@ export class DOMInterface {
                 deleteTodoButton.classList.add("deleteTodoButton");
                 deleteTodoButton.textContent = "-";
                 todoDiv.appendChild(deleteTodoButton);
+                todo.deleteButton = deleteTodoButton;
                 // Title
                 let todoName = document.createElement("p");
                 todoName.classList.add("todoName");
@@ -72,15 +88,19 @@ export class DOMInterface {
             addTodo.textContent = "Add task";
             addTodo.classList.add("addTodoButton");
             projectDiv.appendChild(addTodo);
+            element.addTodoButton = addTodo;
 
             //Button / DELETE
-            let deleteBtn = document.createElement("button");
-            deleteBtn.textContent = "Delete"
-            deleteBtn.classList.add("deleteProjectButton");
-            projectDiv.appendChild(deleteBtn);
+            let deleteProject = document.createElement("button");
+            deleteProject.textContent = "Delete"
+            deleteProject.classList.add("deleteProjectButton");
+            projectDiv.appendChild(deleteProject);
+            element.deleteProjectButton = deleteProject;
 
             //Append projectDiv
             this.mainContainer.appendChild(projectDiv);
         });
+
+        this.setEventListeners();
     }
 }

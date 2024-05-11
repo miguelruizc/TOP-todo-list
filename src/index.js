@@ -24,11 +24,15 @@ let p = new ProjectsInterface(projects);
 
 p.renderProjects();
 console.log(projects);
+console.log(":::::::::");
 
 console.log("p: "+p)
 let d = new DOMInterface(p);
 d.clearDOM();
 d.render();
+
+p.renderProjects();
+console.log(projects);
 
 let data = JSON.stringify(projects);
 localStorage.setItem("projectsData", data);
