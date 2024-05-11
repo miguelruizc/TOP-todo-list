@@ -12,3 +12,5 @@ let c = new ConsoleInterface(projects);
 c.createTodo();
 c.createTodo();
 c.renderProjects();
+c.deleteProject("Default");
+c.renderProjects();

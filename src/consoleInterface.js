@@ -31,10 +31,17 @@ export class ConsoleInterface {
             let index = this.projects.findIndex(obj => obj.title === projectTitle);
             this.projects[index].addTodo(newTodo);    
         }
+    }
 
+    deleteProject(name){
+        //create new array without filtered objects
+        let temp = this.projects.filter(element => element.title !== name);
+        this.projects = temp;
     }
 
     renderProjects() {
+        if(this.projects.length === 0)
+            console.log("No projects");
         this.projects.forEach(element => {
             console.log(`Project: ${element.title}`);
             element.todoList.forEach(todo => {
