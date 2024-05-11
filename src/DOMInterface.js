@@ -7,7 +7,5 @@ export class DOMInterface {
         this.mainContainer.innerHTML = "";
     }
 
-    test() {
-        console.log("DOOM INTERFACE ACTIVATED!");
-    }
+    
 }
