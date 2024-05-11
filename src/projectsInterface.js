@@ -1,7 +1,7 @@
 import {Project} from "./project.js";
 import {Todo} from "./todo.js";
 
-export class ConsoleInterface {
+export class ProjectsInterface {
     constructor(projectsArray){
         this.projects = projectsArray;
     }
