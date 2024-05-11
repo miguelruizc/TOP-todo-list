@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+button {
+    border: 1px solid rgb(184, 184, 184);
+    padding: 2px;
+}
+
+button:hover {
+    background-color: rgb(192, 255, 75);
+}
+
 .project {
     background-color: rgb(173, 222, 255);
     outline: 1px solid rgb(70, 166, 255);
@@ -12,6 +21,7 @@
 
 .todo {
     background-color: rgb(238, 238, 238);
+    display: flex;
 }
 
 .todo .todoDescription,
@@ -23,6 +33,10 @@
 
 .todoName {
     font-weight: bold;
+}
+
+.deleteTodoButton {
+    background-color: #ff8b2c;
 }
 
 .deleteProjectButton {

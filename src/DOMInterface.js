@@ -27,6 +27,11 @@ export class DOMInterface {
                 // todo div
                 let todoDiv = document.createElement("div");
                 todoDiv.classList.add("todo");
+                // Remove button
+                let deleteTodoButton = document.createElement("button");
+                deleteTodoButton.classList.add("deleteTodoButton");
+                deleteTodoButton.textContent = "-";
+                todoDiv.appendChild(deleteTodoButton);
                 // Title
                 let todoName = document.createElement("p");
                 todoName.classList.add("todoName");
