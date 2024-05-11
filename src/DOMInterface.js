@@ -17,7 +17,7 @@ export class DOMInterface {
             //Set add task click-Listener
             element.addTodoButton.addEventListener("click", ()=>{this.addTodo(element.title);});
             //Set delete project click-listener
-            element.deleteProjectButton.addEventListener("click", ()=>{this.deleteProject();});
+            element.deleteProjectButton.addEventListener("click", ()=>{this.deleteProject(element.title);});
             //Iterate all todos
             element.todoList.forEach(todo => {
                 //Set delete todo click-listener
@@ -122,8 +122,10 @@ export class DOMInterface {
         this.render();
     }
 
-    deleteProject() {
-        console.log("delete project clicked");
+    deleteProject(projectName) {
+        this.projectsInterface.deleteProject(projectName);
+        this.clearDOM();
+        this.render();
     }
 
     deleteTodo() {
