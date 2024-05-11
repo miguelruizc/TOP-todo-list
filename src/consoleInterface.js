@@ -11,7 +11,7 @@ export class ConsoleInterface {
         this.projects.push(newProject);
     }
 
-    createTodo(projectTitle = "Default", title="Todo name", description="Description", dueDate=new Date(1111, 1, 1), priority=0, notes="Notes", isDone=false){
+    createTodo(projectTitle = "Default", title="Task", description="Task about X", dueDate=new Date(1111, 1, 1), priority=0, notes="Notes", isDone=false){
         let newTodo = new Todo(title, description, dueDate, priority, notes, isDone);
         
         //If the project exists, add todo
@@ -35,6 +35,11 @@ export class ConsoleInterface {
     }
 
     renderProjects() {
-        console.table(this.projects);
+        this.projects.forEach(element => {
+            console.log(`Project: ${element.title}`);
+            element.todoList.forEach(todo => {
+                console.log(todo.toString());
+            });
+        });
     }
 }
