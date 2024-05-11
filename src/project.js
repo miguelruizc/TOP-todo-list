@@ -1,7 +1,7 @@
 export class Project {
     constructor(title){
         this.title = title;
-        this.todoList = new Array();        
+        this.todoList = new Array();      
     }
 
     addTodo(todoItem){

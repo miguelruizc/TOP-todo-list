@@ -25,3 +25,8 @@
     font-weight: bold;
 }
 
+.deleteProjectButton {
+    font-size: small;
+    background-color: #ffb0b0;
+    display: block;
+}

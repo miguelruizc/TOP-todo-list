@@ -25,6 +25,7 @@ let p = new ProjectsInterface(projects);
 p.renderProjects();
 console.log(projects);
 
+console.log("p: "+p)
 let d = new DOMInterface(p);
 d.clearDOM();
 d.render();

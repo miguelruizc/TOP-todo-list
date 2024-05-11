@@ -42,7 +42,7 @@ export class DOMInterface {
                 todoDueDate.classList.add("todoDueDate");
                 todoDueDate.textContent = todo.dueDate;
                 todoDiv.appendChild(todoDueDate);
-                // prority
+                // priority
                 let todoPrio = document.createElement("p");
                 todoPrio.classList.add("todoPrio");
                 todoPrio.textContent = "Priority: " + todo.priority;
@@ -61,10 +61,27 @@ export class DOMInterface {
 
             //Append todoListDIv
             projectDiv.appendChild(todoListDiv);
+
+            //Buttons / ADD
+            let addTodo = document.createElement("button");
+            addTodo.textContent = "Add task";
+            addTodo.classList.add("addTodoButton");
+            projectDiv.appendChild(addTodo);
+
+            //Button / DELETE
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete"
+            deleteBtn.classList.add("deleteProjectButton");
+            projectDiv.appendChild(deleteBtn);
+
             //Append projectDiv
             this.mainContainer.appendChild(projectDiv);
         });
 
         
+    }
+
+    addTodoClick(event) {
+        console.log("add clicked");
     }
 }
