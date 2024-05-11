@@ -11,15 +11,24 @@ export class DOMInterface {
     
     setEventListeners() {
         //Iterate all projects
+        //console.log("This(outside): " + JSON.stringify(this, null, 2));
         this.projectsInterface.projects.forEach((element) => {
             //Set add task click-Listener
-            element.addTodoButton.addEventListener("click", ()=>{console.log("addTodoButton clicked")});
+            element.addTodoButton.addEventListener("click", ()=>{
+                this.projectsInterface.createTodo(element.title, undefined, undefined,undefined, undefined, undefined, undefined);
+                this.clearDOM();
+                this.render();
+            });
             //Set delete project click-listener
-            element.deleteProjectButton.addEventListener("click", ()=>{console.log("removeProjectButton clicked")});
+            element.deleteProjectButton.addEventListener("click", ()=>{
+                console.log("removeProjectButton clicked")
+            });
             //Iterate all todos
             element.todoList.forEach((todo) => {
                 //Set delete todo click-listener
-                todo.deleteButton.addEventListener("click", ()=>{console.log("removeTodo clicked")});
+                todo.deleteButton.addEventListener("click", ()=>{
+                    console.log("removeTodo clicked");
+                });
             });
         });
     }
