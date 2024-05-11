@@ -27,6 +27,7 @@ console.log(projects);
 
 let d = new DOMInterface(p);
 d.clearDOM();
+d.render();
 
 let data = JSON.stringify(projects);
 localStorage.setItem("projectsData", data);

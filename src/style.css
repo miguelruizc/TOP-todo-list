@@ -1,3 +1,27 @@
 * {
-    outline: 1px solid red;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
 }
+
+.project {
+    background-color: rgb(173, 222, 255);
+    outline: 1px solid rgb(70, 166, 255);
+    padding: 5px;
+}
+
+.todo {
+    background-color: rgb(238, 238, 238);
+}
+
+.todo .todoDescription,
+.todo .todoDueDate, 
+.todo .todoPrio,
+.todo .todoNotes {
+    display: none;
+}
+
+.todoName {
+    font-weight: bold;
+}
+
