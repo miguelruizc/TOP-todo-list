@@ -50,6 +50,19 @@ export class ConsoleInterface {
         });
     }
 
+    editTodo(projectName, todoName, field, newValue){
+        //Iterate projects to find projectName
+        this.projects.forEach((project)=>{
+            if(project.title === projectName){
+                //Iterate todos to find todoName
+                project.todoList.forEach((todo)=>{
+                    if(todo.title === todoName)
+                        todo[field] = newValue;
+                });
+            }
+        });
+    }
+
     renderProjects() {
         if(this.projects.length === 0)
                 console.log("No projects");

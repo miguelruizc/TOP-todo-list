@@ -15,7 +15,9 @@ c.createTodo("Work", "Taxes", "Do taxes", undefined, 1,"Remember to include cryp
 c.createTodo("Work", "Q1 Report", "Report of the 1st quarter", undefined, 1,"Spreadsheet and presentation", false);
 c.renderProjects();
 
-console.log("Deleting...");
+console.log("");
+console.log("Editing...");
+console.log("");
 
-c.deleteProject("Default");
+c.editTodo("Work", "Taxes", "notes", "Remember to include crypto and also to include switzerland accounts");
 c.renderProjects();
