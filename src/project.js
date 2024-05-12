@@ -1,5 +1,6 @@
 export class Project {
-    constructor(title){
+    constructor(title, id=1){
+        this.id = id;
         this.title = title;
         this.todoList = new Array();      
     }

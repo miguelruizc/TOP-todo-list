@@ -7,7 +7,7 @@ export class ProjectsInterface {
     }
 
     createProject(title) {
-        let newProject = new Project(title);
+        let newProject = new Project(title, this.createProjectId());
         this.projects.push(newProject);
     }
 
@@ -85,5 +85,21 @@ export class ProjectsInterface {
                 console.log(todo.toString());
             });
         });
+    }
+
+    createProjectId() {
+        //Iterate from 0 to infinite and find the first available ID
+        for(let i = 0; true ;i++)
+        {
+            let available = true;
+            this.projects.forEach((project)=>{
+                if(project.id === i){
+                    available = false;
+                }
+            });
+            
+            if(available)
+                return i;
+        }
     }
 }
