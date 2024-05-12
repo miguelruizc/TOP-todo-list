@@ -42,3 +42,5 @@ console.log(projects);
 // localStorage.setItem("projectsData", data);
 
 // TODO: Add ids to todo and project items, to be able to have multiple with the same name
+
+// WIP: Implement new Todo calls to generate an unique ID

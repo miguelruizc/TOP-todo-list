@@ -11,40 +11,27 @@ export class ProjectsInterface {
         this.projects.push(newProject);
     }
 
-    createTodo(projectTitle = "Default", title="Task", description="Task about X", dueDate=new Date(1111, 1, 1), priority=0, notes="Notes", isDone=false){
-        let newTodo = new Todo(title, description, dueDate, priority, notes, isDone);
+    createTodo(projectId = 0, projectID=1, title="Task", description="Task about X", dueDate=new Date(1111, 1, 1),
+               priority=0, notes="Notes", isDone=false){
         
-        //If the project exists, add todo
-        if(this.projects.some(project => project.title === projectTitle)){
-            
-            console.log(`Todo: ${newTodo} created, inside ${projectTitle} project, which existed beforehand`);
-            
-            let index = this.projects.findIndex(obj => obj.title === projectTitle);
-            this.projects[index].addTodo(newTodo); 
-        }
-        //Else, create project, add todo
-        else {
-            
-            console.log(`Todo: ${newTodo} created, inside ${projectTitle} project, which didn't existed beforehand`);
-            
-            this.createProject(projectTitle);
-            let index = this.projects.findIndex(obj => obj.title === projectTitle);
-            this.projects[index].addTodo(newTodo);    
-        }
+        let index = this.projects.findIndex(project => project.id === projectId);
+        let newTodo = new Todo(title, description, dueDate, priority, notes, isDone, this.createTodoId(projectId));
+        this.projects[index].addTodo(newTodo); 
+    
     }
 
-    deleteProject(name){
+    deleteProject(projectId){
         //create new array without filtered objects
-        let temp = this.projects.filter(element => element.title !== name);
+        let temp = this.projects.filter(element => element.id !== projectId);
         this.projects = temp;
     }
 
-    deleteTodo(projectName, todoName){
+    deleteTodo(projectId, todoId){
         //Iterate projects to find ProjectName
         this.projects.forEach(element => {
-            if(element.title === projectName){
+            if(element.id === projectId){
                 //Filter todos with todoName
-                let tempArray = element.todoList.filter(todo => todo.title !== todoName);
+                let tempArray = element.todoList.filter(todo => todo.id !== todoId);
                 element.todoList = tempArray;
             }  
         });
@@ -101,5 +88,36 @@ export class ProjectsInterface {
             if(available)
                 return i;
         }
+    }
+
+    createTodoId(projectId) {
+      
+        //Find the project
+        for(let project of this.projects){
+            if(project.id === projectId){
+                
+                //If first task, set to 0
+                if(project.todoList.length === 0){
+                    return 0;
+                }
+
+                // Else, find first available id
+                for(let i = 0; true; i++){
+                    
+                    let available = true;
+
+                    for(let todo of project.todoList) {
+                        if(todo.id === i){
+                            //BUG todo.id is undefined after set to 0
+                            available = false;
+                        }
+                    };
+
+                    if(available){
+                        return i;
+                    }
+                };
+            }
+        };
     }
 }

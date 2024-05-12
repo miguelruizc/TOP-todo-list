@@ -15,13 +15,13 @@ export class DOMInterface {
         //Iterate all projects
         this.projectsInterface.projects.forEach((element) => {
             //Set add task click-Listener
-            element.addTodoButton.addEventListener("click", ()=>{this.addTodo(element.title);});
+            element.addTodoButton.addEventListener("click", ()=>{this.addTodo(element.id);});
             //Set delete project click-listener
-            element.deleteProjectButton.addEventListener("click", ()=>{this.deleteProject(element.title);});
+            element.deleteProjectButton.addEventListener("click", ()=>{this.deleteProject(element.id);});
             //Iterate all todos
             element.todoList.forEach(todo => {
                 //Set delete todo click-listener
-                todo.deleteButton.addEventListener("click", ()=>{this.deleteTodo(element.title, todo.title);});
+                todo.deleteButton.addEventListener("click", ()=>{this.deleteTodo(element.id, todo.id);});
             });
         });
         //Create project button
@@ -53,6 +53,7 @@ export class DOMInterface {
                 // Remove button
                 let deleteTodoButton = document.createElement("button");
                 deleteTodoButton.classList.add("deleteTodoButton");
+                deleteTodoButton.setAttribute("id", `deleteTodoButtonProject${element.id}Todo${todo.id}`)
                 deleteTodoButton.textContent = "-";
                 todoDiv.appendChild(deleteTodoButton);
                 todo.deleteButton = deleteTodoButton;
@@ -95,6 +96,7 @@ export class DOMInterface {
             let addTodo = document.createElement("button");
             addTodo.textContent = "Add task";
             addTodo.classList.add("addTodoButton");
+            addTodo.setAttribute("id", `addTodoButtonProject${element.id}`);
             projectDiv.appendChild(addTodo);
             element.addTodoButton = addTodo;
 
@@ -102,6 +104,7 @@ export class DOMInterface {
             let deleteProject = document.createElement("button");
             deleteProject.textContent = "Delete"
             deleteProject.classList.add("deleteProjectButton");
+            deleteProject.setAttribute("id", `deleteProjectButtonProject${element.id}`);
             projectDiv.appendChild(deleteProject);
             element.deleteProjectButton = deleteProject;
 
@@ -119,18 +122,18 @@ export class DOMInterface {
     }
 
     //Event handlers
-    addTodo(projectName) {
-        this.projectsInterface.createTodo(projectName, undefined, undefined, undefined, undefined, undefined, undefined);
+    addTodo(projectId) {
+        this.projectsInterface.createTodo(projectId, undefined, undefined, undefined, undefined, undefined, undefined);
         this.render();
     }
 
-    deleteProject(projectName) {
-        this.projectsInterface.deleteProject(projectName);
+    deleteProject(projectId) {
+        this.projectsInterface.deleteProject(projectId);
         this.render();
     }
 
-    deleteTodo(projectName, todoName) {
-        this.projectsInterface.deleteTodo(projectName, todoName);
+    deleteTodo(projectId, todoId) {
+        this.projectsInterface.deleteTodo(projectId, todoId);
         this.render();
     }
 
