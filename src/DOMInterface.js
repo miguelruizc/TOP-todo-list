@@ -217,9 +217,27 @@ export class DOMInterface {
     }
 
     editTodo(todo) {
-        // create form in dialog
+        // Click handler to use BELOW
+        const clickHandler = (event) => {
+            event.preventDefault();
+            
+            // handle submit to modify the todo with form data
+            todo.title = nameInput.value; 
+            todo.description = descriptionInput.value; 
+            todo.dueDate = dateInput.value;
+            todo.priority = priorityInput.value;
+            todo.notes = notesInput.value;
+
+             // remove event listener & close modal
+             submitButton.removeEventListener("click", clickHandler);
+             dialog.close();
+
+             // refresh dom
+             this.render();
+        }
+
+        // get form and populate with todo data
         const dialog = document.getElementById("editTodoDialog");
-        const form = dialog.querySelector("form");
         const nameInput = document.getElementById("editTodoName");
         const descriptionInput = document.getElementById("editTodoDescription");
         const dateInput = document.getElementById("editTodoDate");
@@ -233,12 +251,10 @@ export class DOMInterface {
         notesInput.value = todo.notes;
 
         dialog.showModal();
-        // render form filled with todo info as values
-        // set event listener for submit
-        // handle submit to modify the todo with form data
-        // remove event listener
 
-        console.log("Edit clicked, todo: " + todo);
+        // set event listener for submit
+        const submitButton = document.getElementById("editTodoSubmitButton");
+        submitButton.addEventListener("click", clickHandler);
     }
 
     toggleShowDetails(event, projectId, todoId) {
@@ -246,7 +262,7 @@ export class DOMInterface {
         const parent = event.target.parentNode;
         const children = parent.children;
 
-        //Iterate through all .todo children except name & detele button
+        //Iterate through all .todo children except name & delete button
         for(let i = 2; i < children.length; i++){
             children[i].classList.toggle("hide");
         }
