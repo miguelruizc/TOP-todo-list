@@ -154,7 +154,7 @@ export class DOMInterface {
             
             const todoName= formData.get("newTodoName");
             const todoDescription= formData.get("newTodoDescription");
-            const todoDate = new Date(formData.get("newTodoDate"));
+            const todoDate = format(new Date(formData.get("newTodoDate")), "yyyy-MM-dd");
             const todoPriority= formData.get("newTodoPriority");
             const todoNotes= formData.get("newTodoNotes");
             dialog.close();
