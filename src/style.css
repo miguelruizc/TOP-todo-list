@@ -35,6 +35,10 @@ button:active {
     display: none;
 } */
 
+.hide {
+    display: none;
+}
+
 .todoName {
     font-weight: bold;
     cursor: pointer;

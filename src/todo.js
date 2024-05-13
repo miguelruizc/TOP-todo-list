@@ -9,6 +9,7 @@ export class Todo {
         this.notes = notes;
         this.isDone = isDone;
         this.id = id;
+        this.hideDetails = true;
     }
 
     toString(){

@@ -14,14 +14,18 @@ export class DOMInterface {
     setEventListeners() {
         //Iterate all projects
         this.projectsInterface.projects.forEach((element) => {
-            //Set add task click-Listener
+            // Add task click-Listener
             element.addTodoButton.addEventListener("click", ()=>{this.addTodo(element.id);});
-            //Set delete project click-listener
+            // Delete project click-listener
             element.deleteProjectButton.addEventListener("click", ()=>{this.deleteProject(element.id);});
             //Iterate all todos
             element.todoList.forEach(todo => {
-                //Set delete todo click-listener
+                // Delete todo click-listener
                 todo.deleteButton.addEventListener("click", ()=>{this.deleteTodo(element.id, todo.id);});
+                // Todo Name (toggle show details) click-listener
+                const todoName = document.getElementById(`todoName#${element.id}#${todo.id}`);
+                todoName.addEventListener("click", (event)=>{ this.toggleShowDetails(event, element.id, todo.id);});
+                            
             });
         });
         //Create project button
@@ -66,21 +70,25 @@ export class DOMInterface {
                 // Description
                 let todoDescription = document.createElement("p");
                 todoDescription.classList.add("todoDescription");
+                if(todo.hideDetails) todoDescription.classList.add("hide");
                 todoDescription.textContent = todo.description;
                 todoDiv.appendChild(todoDescription);
                 // dueDate
                 let todoDueDate = document.createElement("p");
                 todoDueDate.classList.add("todoDueDate");
+                if(todo.hideDetails) todoDueDate.classList.add("hide");
                 todoDueDate.textContent = todo.dueDate;
                 todoDiv.appendChild(todoDueDate);
                 // priority
                 let todoPrio = document.createElement("p");
                 todoPrio.classList.add("todoPrio");
+                if(todo.hideDetails) todoPrio.classList.add("hide");
                 todoPrio.textContent = "Priority: " + todo.priority;
                 todoDiv.appendChild(todoPrio);
                 // notes
                 let todoNotes = document.createElement("p");
                 todoNotes.classList.add("todoNotes");
+                if(todo.hideDetails) todoNotes.classList.add("hide");
                 todoNotes.textContent = todo.notes;
                 todoDiv.appendChild(todoNotes);
                 // isDone
@@ -195,5 +203,29 @@ export class DOMInterface {
         // Set event listener to submit button
         let submitButton = document.getElementById("projectSubmitButton");
         submitButton.addEventListener("click", clickHandler); 
+    }
+
+    toggleShowDetails(event, projectId, todoId) {
+        //Find the parent
+        const parent = event.target.parentNode;
+        const children = parent.children;
+
+        //Iterate through all .todo children except name & detele button
+        for(let i = 2; i < children.length; i++){
+            children[i].classList.toggle("hide");
+        }
+
+        //Find project
+        this.projectsInterface.projects.forEach((project)=>{
+             //Find todo
+             if(project.id === projectId){
+                project.todoList.forEach((todo)=>{
+                    if(todo.id === todoId){
+                        //Toggle todo.hideDetails
+                        todo.hideDetails = !todo.hideDetails;
+                    }
+                });
+             }
+        });
     }
 }
