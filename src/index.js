@@ -20,14 +20,6 @@ import { ProjectsInterface } from "./projectsInterface.js";
 //     });
 // });
 
-//Dialogs debug
-let addProjectDialog = document.getElementById("addProjectDialog");
-let addProjectDialogButton = document.getElementById("openDialog");
-
-addProjectDialogButton.addEventListener("click", ()=>{
-    addProjectDialog.showModal();
-});
-
 // Projects generated manually 
 //(need to load from localStorage in the final version)
 let projects = new Array();

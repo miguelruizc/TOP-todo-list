@@ -167,7 +167,32 @@ export class DOMInterface {
     }
 
     addProject(projectName) { 
-        this.projectsInterface.createProject(projectName);
-        this.render();
+        
+        // Click handler function to be used below 
+        const clickHandler = (event)=>{
+            event.preventDefault();
+            
+            // Handle submit
+            const form = submitButton.closest("form");
+            const formData = new FormData(form);
+            
+            const projectName= formData.get("newProjectName");
+            dialog.close();
+
+            //Remove eventListener
+            submitButton.removeEventListener("click", clickHandler);
+
+            //Create new Project with form data
+            this.projectsInterface.createProject(projectName);
+            this.render();
+        }; 
+
+        //Open dialog with form 
+        let dialog = document.getElementById("addProjectDialog");
+        dialog.showModal();
+
+        // Set event listener to submit button
+        let submitButton = document.getElementById("projectSubmitButton");
+        submitButton.addEventListener("click", clickHandler); 
     }
 }
