@@ -123,8 +123,37 @@ export class DOMInterface {
 
     //Event handlers
     addTodo(projectId) {
-        this.projectsInterface.createTodo(projectId, undefined, undefined, undefined, undefined, undefined, undefined);
-        this.render();
+
+        // Click handler function to be used below 
+        const clickHandler = (event)=>{
+            event.preventDefault();
+            
+            // Handle submit
+            const form = submitButton.closest("form");
+            const formData = new FormData(form);
+            
+            const todoName= formData.get("newTodoName");
+            const todoDescription= formData.get("newTodoDescription");
+            const todoDate = new Date(formData.get("newTodoDate"));
+            const todoPriority= formData.get("newTodoPriority");
+            const todoNotes= formData.get("newTodoNotes");
+            dialog.close();
+
+            //Remove eventListener
+            submitButton.removeEventListener("click", clickHandler);
+
+            //Create new todo with form data
+            this.projectsInterface.createTodo(projectId, todoName, todoDescription, todoDate, todoPriority, todoNotes, false);
+            this.render();
+        }; 
+
+        //Open dialog with form 
+        let dialog = document.getElementById("addTodoDialog");
+        dialog.showModal();
+
+        // Set event listener to submit button
+        let submitButton = document.getElementById("todoSubmitButton");
+        submitButton.addEventListener("click", clickHandler);     
     }
 
     deleteProject(projectId) {

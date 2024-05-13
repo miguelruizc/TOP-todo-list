@@ -11,7 +11,7 @@ export class ProjectsInterface {
         this.projects.push(newProject);
     }
 
-    createTodo(projectId = 0, projectID=1, title="Task", description="Task about X", dueDate=new Date(1111, 1, 1),
+    createTodo(projectId = 0, title="Task", description="Task about X", dueDate=new Date(1111, 1, 1),
                priority=0, notes="Notes", isDone=false){
         
         let index = this.projects.findIndex(project => project.id === projectId);

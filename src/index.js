@@ -23,14 +23,9 @@ import { ProjectsInterface } from "./projectsInterface.js";
 //Dialogs debug
 let addProjectDialog = document.getElementById("addProjectDialog");
 let addProjectDialogButton = document.getElementById("openDialog");
-let addTodoDialog = document.getElementById("addTodoDialog");
-let addTodoDialogButton = document.getElementById("openDialog2");
 
 addProjectDialogButton.addEventListener("click", ()=>{
     addProjectDialog.showModal();
-});
-addTodoDialogButton.addEventListener("click", ()=>{
-    addTodoDialog.showModal();
 });
 
 // Projects generated manually 
