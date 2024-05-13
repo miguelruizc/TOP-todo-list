@@ -41,14 +41,6 @@ button:active {
     background-color: rgb(198, 202, 255);
 }
 
-/* .todoName:hover {
-    color: rgb(75, 114, 255);
-}
-
-.todoName:active {
-    color: rgb(0, 238, 255);
-} */
-
 
 .deleteTodoButton {
     background-color: #ff8b2c;

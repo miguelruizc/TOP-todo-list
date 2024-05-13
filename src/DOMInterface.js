@@ -53,7 +53,7 @@ export class DOMInterface {
                 // Remove button
                 let deleteTodoButton = document.createElement("button");
                 deleteTodoButton.classList.add("deleteTodoButton");
-                deleteTodoButton.setAttribute("id", `deleteTodoButtonProject${element.id}Todo${todo.id}`)
+                // deleteTodoButton.setAttribute("id", `deleteTodoButtonProject${element.id}Todo${todo.id}`)
                 deleteTodoButton.textContent = "-";
                 todoDiv.appendChild(deleteTodoButton);
                 todo.deleteButton = deleteTodoButton;
@@ -61,6 +61,7 @@ export class DOMInterface {
                 let todoName = document.createElement("p");
                 todoName.classList.add("todoName");
                 todoName.textContent = todo.title;
+                todoName.setAttribute("id", `todoName#${element.id}#${todo.id}`);
                 todoDiv.appendChild(todoName);
                 // Description
                 let todoDescription = document.createElement("p");
