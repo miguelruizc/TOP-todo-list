@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div id="main">Hello HTML!</div>
+    
+    <div id="dialogContainer">
+        <dialog id="addProjectDialog">
+            <form method="dialog">
+                <label>Project name:</label>
+                <input type="text" name="newProjectName" id="newProjectName" value="Project">
+                <button type="submit" id="projectSubmitButton">Submit</button>
+            </form>
+        </dialog>
+    </div>
+    <div id="dialogContainer2">
+        <dialog id="addTodoDialog">
+            <form method="dialog">
+                <label>Task name:</label>
+                <input type="text" name="newTodoName" id="newTodoName" value="Task">
+                <label>Task description:</label>
+                <input type="text" name="newTodoDescription" id="newTodoDescription" value="Description">
+                <label>Due date:</label>
+                <input type="date" name="newTodoDate" id="newTodoDate" value="2011-09-29">
+                <label>Priority:</label>
+                <input type="number" name="newTodoPriority" id="newTodoPriority" value=0>
+                <label>Notes:</label>
+                <input type="text" name="newTodoNotes" id="newTodoNotes" value="notes">
+                <button type="submit" id="todoSubmitButton">Submit</button>
+            </form>
+        </dialog>
+    </div>
+    <div id="dialogContainer3">
+        <dialog id="editTodoDialog">
+            <form method="dialog">
+                <label>Task name:</label>
+                <input type="text" name="editTodoName" id="editTodoName">
+                <label>Task description:</label>
+                <input type="text" name="editTodoDescription" id="editTodoDescription">
+                <label>Due date:</label>
+                <input type="date" name="editTodoDate" id="editTodoDate">
+                <label>Priority:</label>
+                <input type="number" name="editTodoPriority" id="editTodoPriority">
+                <label>Notes:</label>
+                <input type="text" name="todoNotes" id="editTodoNotes">
+                <button type="submit" id="editTodoSubmitButton">Submit</button>
+            </form>
+        </dialog>
+    </div>
+</body>
+</html>
