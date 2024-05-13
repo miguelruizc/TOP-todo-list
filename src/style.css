@@ -1,7 +1,3 @@
-.todo {
-    display: flex;
-}
-
 .hide {
     display: none;
 }
@@ -10,29 +6,132 @@
     cursor: pointer;
 }
 
-
-/* .todo children */
-/* 1st (deleteButton) & 2nd (task name) stacked horizontally */
-/* all the other children stacked vertically and toggle (display:none) from javascript */
-
 .todo {
     display: flex;
     flex-wrap: wrap;
 }
 
-.todo > button:first-child {
-    flex-basis: 10px;
+.todo > * {
+    flex-basis: 100%;
 }
 
-.todo > *:nth-child(2) {
-    flex-grow: 1;
-}
-
-.todo > *:not(:first-child):not(:nth-child(2)) {
-    flex-basis: 100%; 
-
-}
-
+.deleteTodoButton,
 .editButton {
     max-width: 30px;
+}
+
+* {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 800px; /* Adjust as needed */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.project {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.todo {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: monospace;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 5px 10px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+.remove, 
+.isReadTrue,
+.isReadFalse {
+    text-align: center;
+}
+
+button {
+    border: 1px solid #cccccc99;
+}
+
+button:hover {
+    background-color: rgb(255, 251, 184);
+}
+
+.isReadFalse button {
+    color: transparent;
+}
+
+form {
+    font-size: 12px;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    max-width: 400px; /* Adjust as needed */
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+    margin-right: 5px;
+}
+
+.form-buttons {
+    gap: 10px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.30);
 }

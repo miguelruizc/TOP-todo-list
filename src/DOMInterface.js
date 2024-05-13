@@ -57,13 +57,6 @@ export class DOMInterface {
                 // todo div
                 let todoDiv = document.createElement("div");
                 todoDiv.classList.add("todo");
-                // Remove button
-                let deleteTodoButton = document.createElement("button");
-                deleteTodoButton.classList.add("deleteTodoButton");
-                // deleteTodoButton.setAttribute("id", `deleteTodoButtonProject${element.id}Todo${todo.id}`)
-                deleteTodoButton.textContent = "-";
-                todoDiv.appendChild(deleteTodoButton);
-                todo.deleteButton = deleteTodoButton;
                 // Title
                 let todoName = document.createElement("p");
                 todoName.classList.add("todoName");
@@ -101,7 +94,14 @@ export class DOMInterface {
                 editButton.textContent = "✎";
                 editButton.setAttribute("id", `editButton#${element.id}#${todo.id}`);
                 todoDiv.appendChild(editButton);
-                
+                // Remove button
+                let deleteTodoButton = document.createElement("button");
+                deleteTodoButton.classList.add("deleteTodoButton");
+                if(todo.hideDetails) deleteTodoButton.classList.add("hide");
+                // deleteTodoButton.setAttribute("id", `deleteTodoButtonProject${element.id}Todo${todo.id}`)
+                deleteTodoButton.textContent = "-";
+                todoDiv.appendChild(deleteTodoButton);
+                todo.deleteButton = deleteTodoButton;
                 // isDone
                 if(todo.isDone) todoDiv.classList.add("isDone");
 
@@ -120,9 +120,9 @@ export class DOMInterface {
             projectDiv.appendChild(addTodo);
             element.addTodoButton = addTodo;
 
-            //Button / DELETE
+            //Delete project button
             let deleteProject = document.createElement("button");
-            deleteProject.textContent = "Delete"
+            deleteProject.textContent = "Delete Project"
             deleteProject.classList.add("deleteProjectButton");
             deleteProject.setAttribute("id", `deleteProjectButtonProject${element.id}`);
             projectDiv.appendChild(deleteProject);
@@ -266,7 +266,7 @@ export class DOMInterface {
         const children = parent.children;
 
         //Iterate through all .todo children except name & delete button
-        for(let i = 2; i < children.length; i++){
+        for(let i = 1; i < children.length; i++){
             children[i].classList.toggle("hide");
         }
 
