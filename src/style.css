@@ -78,3 +78,7 @@ button:active {
     flex-basis: 100%; 
 
 }
+
+.editButton {
+    max-width: 50px;
+}

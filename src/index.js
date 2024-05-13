@@ -1,6 +1,5 @@
 import './style.css';
 import { DOMInterface } from './DOMInterface.js';
-import { format } from "date-fns";
 import { ProjectsInterface } from "./projectsInterface.js"; 
 
 // //Retrieve projects data from local storage

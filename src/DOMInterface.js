@@ -1,4 +1,4 @@
-import {ProjectsInterface} from "./projectsInterface.js"
+import { format } from "date-fns";
 
 export class DOMInterface {
     constructor(projectsInterface){
@@ -25,6 +25,9 @@ export class DOMInterface {
                 // Todo Name (toggle show details) click-listener
                 const todoName = document.getElementById(`todoName#${element.id}#${todo.id}`);
                 todoName.addEventListener("click", (event)=>{ this.toggleShowDetails(event, element.id, todo.id);});
+                // Edit button
+                const editButton = document.getElementById(`editButton#${element.id}#${todo.id}`);
+                editButton.addEventListener("click", (event)=>{ this.editTodo(todo) });
                             
             });
         });
@@ -91,6 +94,14 @@ export class DOMInterface {
                 if(todo.hideDetails) todoNotes.classList.add("hide");
                 todoNotes.textContent = todo.notes;
                 todoDiv.appendChild(todoNotes);
+                // edit button
+                const editButton = document.createElement("button");
+                editButton.classList.add("editButton");
+                if(todo.hideDetails) editButton.classList.add("hide");
+                editButton.textContent = "edit";
+                editButton.setAttribute("id", `editButton#${element.id}#${todo.id}`);
+                todoDiv.appendChild(editButton);
+                
                 // isDone
                 if(todo.isDone) todoDiv.classList.add("isDone");
 
@@ -203,6 +214,31 @@ export class DOMInterface {
         // Set event listener to submit button
         let submitButton = document.getElementById("projectSubmitButton");
         submitButton.addEventListener("click", clickHandler); 
+    }
+
+    editTodo(todo) {
+        // create form in dialog
+        const dialog = document.getElementById("editTodoDialog");
+        const form = dialog.querySelector("form");
+        const nameInput = document.getElementById("editTodoName");
+        const descriptionInput = document.getElementById("editTodoDescription");
+        const dateInput = document.getElementById("editTodoDate");
+        const priorityInput = document.getElementById("editTodoPriority");
+        const notesInput = document.getElementById("editTodoNotes");
+
+        nameInput.value = todo.title;
+        descriptionInput.value = todo.description;
+        dateInput.value = format(todo.dueDate, "yyyy-MM-dd");
+        priorityInput.value = todo.priority;
+        notesInput.value = todo.notes;
+
+        dialog.showModal();
+        // render form filled with todo info as values
+        // set event listener for submit
+        // handle submit to modify the todo with form data
+        // remove event listener
+
+        console.log("Edit clicked, todo: " + todo);
     }
 
     toggleShowDetails(event, projectId, todoId) {

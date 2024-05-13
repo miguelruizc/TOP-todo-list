@@ -13,7 +13,6 @@ export class Todo {
     }
 
     toString(){
-        return `${this.title}, ${this.description}, ${format(this.dueDate,"dd,mm,yyyy")}, ${this.priority}, ${this.notes},\
-        done:${this.isDone} id:${this.id}`;
+        return `${this.title}, ${this.description}, ${format(this.dueDate,"dd,mm,yyyy")}, ${this.priority}, ${this.notes}, done:${this.isDone} id:${this.id}`;
     }
 }
