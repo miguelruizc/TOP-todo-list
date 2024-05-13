@@ -161,6 +161,7 @@ export class DOMInterface {
 
             //Remove eventListener
             submitButton.removeEventListener("click", clickHandler);
+            submitButton.hasEventListener = false;
 
             //Create new todo with form data
             this.projectsInterface.createTodo(projectId, todoName, todoDescription, todoDate, todoPriority, todoNotes, false);
@@ -173,7 +174,7 @@ export class DOMInterface {
 
         // Set event listener to submit button
         let submitButton = document.getElementById("todoSubmitButton");
-        submitButton.addEventListener("click", clickHandler);     
+        this.addUniqueEventListener(submitButton, "click", clickHandler);
     }
 
     deleteProject(projectId) {
@@ -186,7 +187,7 @@ export class DOMInterface {
         this.render();
     }
 
-    addProject(projectName) { 
+    addProject() { 
         
         // Click handler function to be used below 
         const clickHandler = (event)=>{
@@ -201,6 +202,7 @@ export class DOMInterface {
 
             //Remove eventListener
             submitButton.removeEventListener("click", clickHandler);
+            submitButton.hasEventListener = false;
 
             //Create new Project with form data
             this.projectsInterface.createProject(projectName);
@@ -213,7 +215,7 @@ export class DOMInterface {
 
         // Set event listener to submit button
         let submitButton = document.getElementById("projectSubmitButton");
-        submitButton.addEventListener("click", clickHandler); 
+        this.addUniqueEventListener(submitButton, "click", clickHandler);
     }
 
     editTodo(todo) {
@@ -230,6 +232,7 @@ export class DOMInterface {
 
              // remove event listener & close modal
              submitButton.removeEventListener("click", clickHandler);
+             submitButton.hasEventListener = false;
              dialog.close();
 
              // refresh dom
@@ -254,7 +257,7 @@ export class DOMInterface {
 
         // set event listener for submit
         const submitButton = document.getElementById("editTodoSubmitButton");
-        submitButton.addEventListener("click", clickHandler);
+        this.addUniqueEventListener(submitButton, "click", clickHandler);
     }
 
     toggleShowDetails(event, projectId, todoId) {
@@ -279,5 +282,15 @@ export class DOMInterface {
                 });
              }
         });
+    }
+
+    addUniqueEventListener(element, eventType, handlerFunction) {
+        if(element.hasEventListener) {
+            element.removeEventListener(eventType, element.handlerFunctionReference);
+        }
+
+        element.addEventListener(eventType, handlerFunction);
+        element.handlerFunctionReference = handlerFunction;
+        element.hasEventListener = true;
     }
 }
