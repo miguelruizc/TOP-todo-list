@@ -1,42 +1,49 @@
 import './style.css';
 import { DOMInterface } from './DOMInterface.js';
 import { ProjectsInterface } from "./projectsInterface.js"; 
+import { Project } from "./project.js";
+import { Todo } from "./todo.js";
 
 // //Retrieve projects data from local storage
-// let temp = localStorage.getItem("projectsData");
-// let projects = JSON.parse(temp);
-
-// //Restore methods (projects)
-// projects.forEach(element => {
-//     element.addTodo = function(todoItem){
-//         this.todoList.push(todoItem);
-//     };
-//     //Restore methods todos
-//     element.todoList.forEach(todo => {
-//         todo.toString = function() { 
-//             return `${this.title}, ${this.description}, ${format(this.dueDate,"dd,mm,yyyy")}, ${this.priority}, ${this.notes}, done:${this.isDone}`;
-//         };
-//     });
-// });
-
-// Projects generated manually 
-//(need to load from localStorage in the final version)
 let projects = new Array();
 
-let p = new ProjectsInterface(projects);
+const loadData = localStorage.getItem("data");
+if(loadData !== null) {
+    //Add data to projects array
+    let tempArray = JSON.parse(loadData);
+    tempArray.forEach((element)=>{
+        
+        const projectInstance = Object.assign(new Project(), element);
+        projectInstance.todoList = [];
 
+        element.todoList.forEach((todo)=>{
+            const todoInstance = Object.assign(new Todo(), todo);
+            projectInstance.addTodo(todoInstance);
+        });
+
+        projects.push(projectInstance);
+    });
+}
+else {
+    console.log("No data in local storage");
+}
+
+// Start DOM & projects controllers
+const p = new ProjectsInterface(projects);
+const d = new DOMInterface(p);
+
+console.log("Initial state: ");
 p.renderProjects();
-console.log(projects);
-console.log(":::::::::");
 
-console.log("p: "+p)
-let d = new DOMInterface(p);
 d.render();
 
-p.renderProjects();
-console.log(projects);
+// Store data every 5s
+function save() {
+    const saveData = JSON.stringify(projects);
+    if(saveData !== null){
+        localStorage.setItem("data", saveData);
+    }
+}
+setInterval(save, 1000);
 
-// // TODO: Store data on exit event (and maybe periodically)
-// let data = JSON.stringify(projects);
-// localStorage.setItem("projectsData", data);
 
