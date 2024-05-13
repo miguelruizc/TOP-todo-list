@@ -20,6 +20,19 @@ import { ProjectsInterface } from "./projectsInterface.js";
 //     });
 // });
 
+//Dialogs debug
+let addProjectDialog = document.getElementById("addProjectDialog");
+let addProjectDialogButton = document.getElementById("openDialog");
+let addTodoDialog = document.getElementById("addTodoDialog");
+let addTodoDialogButton = document.getElementById("openDialog2");
+
+addProjectDialogButton.addEventListener("click", ()=>{
+    addProjectDialog.showModal();
+});
+addTodoDialogButton.addEventListener("click", ()=>{
+    addTodoDialog.showModal();
+});
+
 // Projects generated manually 
 //(need to load from localStorage in the final version)
 let projects = new Array();
@@ -41,6 +54,3 @@ console.log(projects);
 // let data = JSON.stringify(projects);
 // localStorage.setItem("projectsData", data);
 
-// TODO: Add ids to todo and project items, to be able to have multiple with the same name
-
-// WIP: Implement new Todo calls to generate an unique ID

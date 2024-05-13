@@ -108,7 +108,6 @@ export class ProjectsInterface {
 
                     for(let todo of project.todoList) {
                         if(todo.id === i){
-                            //BUG todo.id is undefined after set to 0
                             available = false;
                         }
                     };

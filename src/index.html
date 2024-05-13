@@ -7,5 +7,33 @@
 </head>
 <body>
     <div id="main">Hello HTML!</div>
+    
+    <div id="dialogContainer">
+        <dialog id="addProjectDialog">
+            <form method="dialog">
+                <label>Project name:</label>
+                <input type="text" name="newProjectName" id="newProjectName" value="Project">
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
+        <button id="openDialog">new project dialog</button>
+    </div>
+    <div id="dialogContainer2">
+        <dialog id="addTodoDialog">
+            <form method="dialog">
+                <label>Task name:</label>
+                <input type="text" name="newTodoName" id="newTodoName" value="Task">
+                <label>Task description:</label>
+                <input type="text" name="newTodoDescription" id="newTodoDescription" value="Description">
+                <label>Due date:</label>
+                <input type="date" name="newTodoDate" id="newTodoDate" value="2011-09-29">
+                <label>Priority:</label>
+                <input type="number" name="newTodoPriority" id="newTodoPriority" value=0>
+                <label>Notes:</label>
+                <input type="text" name="newTodoNotes" id="newTodoNotes" value="notes">
+                <button type="submit">Submit</button>
+            </form>
+        </dialog>
+        <button id="openDialog2">new todo dialog</button>
 </body>
 </html>
