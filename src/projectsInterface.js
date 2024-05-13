@@ -21,9 +21,14 @@ export class ProjectsInterface {
     }
 
     deleteProject(projectId){
-        //create new array without filtered objects
-        let temp = this.projects.filter(element => element.id !== projectId);
-        this.projects = temp;
+        //Iterate project to find projectId
+        for(let i = 0; i < this.projects.length; i++){
+            if(this.projects[i].id === projectId){
+                // Remove project from array
+                this.projects.splice(i, 1);
+                return;
+            }
+        }
     }
 
     deleteTodo(projectId, todoId){

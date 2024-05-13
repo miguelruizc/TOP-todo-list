@@ -40,6 +40,8 @@ d.render();
 // Store data every 5s
 function save() {
     const saveData = JSON.stringify(projects);
+    console.log(projects);
+    console.log(saveData);
     if(saveData !== null){
         localStorage.setItem("data", saveData);
     }
