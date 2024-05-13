@@ -28,16 +28,27 @@ button:active {
     display: flex;
 }
 
-.todo .todoDescription,
+/* .todo .todoDescription,
 .todo .todoDueDate, 
 .todo .todoPrio,
 .todo .todoNotes {
     display: none;
-}
+} */
 
 .todoName {
     font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(198, 202, 255);
 }
+
+/* .todoName:hover {
+    color: rgb(75, 114, 255);
+}
+
+.todoName:active {
+    color: rgb(0, 238, 255);
+} */
+
 
 .deleteTodoButton {
     background-color: #ff8b2c;
@@ -52,4 +63,22 @@ button:active {
 .createProjectButton {
     background-color: rgb(12, 97, 255);
     color: white;
+}
+
+.todo {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.todo > button:first-child {
+    flex-basis: 10px;
+}
+
+.todo > *:nth-child(2) {
+    flex-grow: 1;
+}
+
+.todo > *:not(:first-child):not(:nth-child(2)) {
+    flex-basis: 100%; 
+
 }
