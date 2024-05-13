@@ -39,7 +39,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 90%;
-    max-width: 800px; /* Adjust as needed */
+    max-width: 600px; /* Adjust as needed */
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
@@ -101,37 +101,35 @@ button:hover {
     color: transparent;
 }
 
-form {
-    font-size: 12px;
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 90%;
-    max-width: 400px; /* Adjust as needed */
-}
-
-form input[type="text"],
-form input[type="password"],
-form input[type="email"],
-form input[type="number"],
-form select,
-form textarea {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-form input[type="checkbox"],
-form input[type="radio"] {
-    margin-right: 5px;
-}
-
 .form-buttons {
     gap: 10px;
 }
 
 dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.30);
+}
+
+/* PHASE 2 */
+/* Center dialogs */
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 20px;
+    max-width: 400px; /* Adjust as needed */
+    width: 90%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove default dialog styling */
+dialog::-webkit-backdrop {
+    background-color: rgba(0, 0, 0, 0.30);
+}
+
+/* Remove default dialog styling */
+dialog::-webkit-backdrop {
     background-color: rgba(0, 0, 0, 0.30);
 }
