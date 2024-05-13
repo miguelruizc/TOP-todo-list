@@ -98,7 +98,7 @@ export class DOMInterface {
                 const editButton = document.createElement("button");
                 editButton.classList.add("editButton");
                 if(todo.hideDetails) editButton.classList.add("hide");
-                editButton.textContent = "edit";
+                editButton.textContent = "✎";
                 editButton.setAttribute("id", `editButton#${element.id}#${todo.id}`);
                 todoDiv.appendChild(editButton);
                 

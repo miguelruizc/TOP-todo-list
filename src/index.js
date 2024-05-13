@@ -46,6 +46,6 @@ function save() {
         localStorage.setItem("data", saveData);
     }
 }
-setInterval(save, 1000);
+setInterval(save, 5000);
 
 
