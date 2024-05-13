@@ -1,9 +1,13 @@
+/* Dark theme counterpart */
+
+/* PHASE 1 */
 .hide {
     display: none;
 }
 
 .todoName {
     cursor: pointer;
+    color: #ddd; /* Light gray */
 }
 
 .todo {
@@ -25,6 +29,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #ddd; /* Light gray */
 }
 
 body {
@@ -32,6 +37,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #111; /* Dark background */
 }
 
 #main {
@@ -40,20 +46,21 @@ body {
     align-items: center;
     width: 90%;
     max-width: 600px; /* Adjust as needed */
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px -5px 0px rgba(255, 255, 255, 1); /* Adjusted shadow color */
     padding: 20px;
+    background-color: #00000000; /* Darker background */
 }
 
 .project {
-    border: 1px solid #ccc;
+    border: 1px solid #474747; /* Lighter border */
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1); /* Adjusted shadow color */
 }
 
 .todo {
-    border: 1px solid #ccc;
+    border: 1px solid #303030; /* Lighter border */
     margin-bottom: 5px;
     padding: 5px;
     width: 100%;
@@ -63,10 +70,11 @@ table {
     width: 100%;
     border-collapse: collapse;
     font-family: monospace;
+    color: #ddd; /* Light gray */
 }
 
 table, th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #666; /* Lighter border */
 }
 
 th, td {
@@ -75,12 +83,12 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: #f0f0f0;
+    background-color: #333; /* Darker background */
 }
 
 th {
-    background-color: #333;
-    color: white;
+    background-color: #555; /* Darker background */
+    color: #ddd; /* Light gray */
 }
 
 .remove, 
@@ -90,11 +98,11 @@ th {
 }
 
 button {
-    border: 1px solid #cccccc99;
+    border: 1px solid #303030; /* Lighter border */
 }
 
 button:hover {
-    background-color: rgb(255, 251, 184);
+    background-color: #444; /* Darker background */
 }
 
 .isReadFalse button {
@@ -105,10 +113,6 @@ button:hover {
     gap: 10px;
 }
 
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.30);
-}
-
 /* PHASE 2 */
 /* Center dialogs */
 dialog {
@@ -116,22 +120,17 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid #ccc;
-    background-color: white;
+    border: 1px solid #303030; /* Lighter border */
+    background-color: #111; /* Darker background */
     padding: 20px;
     max-width: 400px; /* Adjust as needed */
     width: 90%;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px -2px 0px 1px rgba(255,255,255,1);
 }
 
 /* Remove default dialog styling */
 dialog::-webkit-backdrop {
-    background-color: rgba(0, 0, 0, 0.30);
-}
-
-/* Remove default dialog styling */
-dialog::-webkit-backdrop {
-    background-color: rgba(0, 0, 0, 0.30);
+    background-color: rgba(255, 255, 255, 0.3); /* Adjusted backdrop color */
 }
 
 /* PHASE 3 */
@@ -152,16 +151,52 @@ dialog form input {
     width: 100%;
 }
 
+button {
+    border: 1px solid #303030; /* Lighter border */
+    color: #ddd; /* Light gray */
+    background-color: #222; /* Darker background */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #444; /* Darker background */
+    color: #fff; /* White */
+}
+
+.isReadFalse button {
+    color: transparent;
+}
+
+/* Adjust input fields */
+dialog form input[type="text"],
+dialog form input[type="date"],
+dialog form input[type="number"] {
+    width: calc(100% - 20px); /* Adjusted width */
+    border: 1px solid #666; /* Lighter border */
+    background-color: #333; /* Dark background */
+    color: #ddd; /* Light gray */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
 /* Rainbow hover effect */
-.project:hover,
+/* .project:hover, */
 .todo:hover,
 .dialog:hover {
-    animation: galacticNebula60 5s linear infinite;
+    animation: galacticNebula 20s linear infinite;
 }
 
 
 button:hover {
-    animation: galacticNebula 20s linear infinite;
+    animation: galacticNebula 1s linear infinite;
 }
 
 @keyframes galacticNebula {

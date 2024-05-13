@@ -1,4 +1,4 @@
-import './style.css';
+import './styleDark.css';
 import { DOMInterface } from './DOMInterface.js';
 import { ProjectsInterface } from "./projectsInterface.js"; 
 import { Project } from "./project.js";
